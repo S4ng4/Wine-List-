@@ -36,7 +36,8 @@ async function loadRegionsPage() {
     if (!data) return;
 
     const regionsContainer = document.querySelector('.region-buttons');
-    const wineRegions = [...new Set(data.wines.filter(wine => wine.type === wineType).map(wine => wine.region))];
+    // Use "wine_type" instead of "type" to match your JSON
+    const wineRegions = [...new Set(data.wines.filter(wine => wine.wine_type === wineType).map(wine => wine.region))];
 
     wineRegions.forEach(region => {
         const button = document.createElement('a');
@@ -57,26 +58,24 @@ async function loadWinesPage() {
     const data = await fetchData('data/wines.json');
     if (!data) return;
 
-    const filteredWines = data.wines.filter(wine => wine.type === wineType && wine.region === region);
+    // Use "wine_type" and "region" to match your JSON
+    const filteredWines = data.wines.filter(wine => wine.wine_type === wineType && wine.region === region);
     const winesGrid = document.querySelector('.wine-cards-grid');
-    
-    // Add logic for filters here if needed
-    
+
     winesGrid.innerHTML = '';
     if (filteredWines.length === 0) {
         winesGrid.innerHTML = '<p>No wines found for this selection.</p>';
     } else {
         filteredWines.forEach(wine => {
-            const card = document.createElement('a');
-            // NOTE: This link should point to a detailed page which you will create.
-            // For now, it's a placeholder.
-            card.href = `wine-details.html?id=${wine.id}`; 
+            const card = document.createElement('div');
             card.className = 'wine-card glass-card';
             card.innerHTML = `
-                <img src="images/${wine.image}" alt="${wine.name}">
-                <h4>${wine.name}</h4>
-                <p>${wine.producer}</p>
-                <p>${wine.year}</p>
+                <h4>${wine.wine_name}</h4>
+                <p><strong>Producer:</strong> ${wine.wine_producer}</p>
+                <p><strong>Vintage:</strong> ${wine.wine_vintage}</p>
+                <p><strong>Description:</strong> ${wine.wine_description || ''}</p>
+                <p><strong>Price (bottle):</strong> ${wine.wine_price_bottle ? '$' + wine.wine_price_bottle : ''}</p>
+                ${wine.organic ? '<p><em>Organic</em></p>' : ''}
             `;
             winesGrid.appendChild(card);
         });
