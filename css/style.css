@@ -1,12 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 
 :root {
-    --primary-color: #38312e;
-    --secondary-color: #B28F67;
-    --text-color-light: #F5EFE1;
-    --background-dark: #10161D;
-    --glass-effect-color: rgba(255, 255, 255, 0.1);
-    --glass-border-color: rgba(255, 255, 255, 0.2);
+    /* Luxury Color Palette */
+    --primary-color: #2C1810;
+    --secondary-color: #D4AF37;
+    --accent-gold: #F4E4BC;
+    --text-color-light: #F8F6F0;
+    --text-color-muted: #C7B299;
+    --background-dark: #0A0A0A;
+    --background-gradient: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0F0F0F 100%);
+    
+    /* Glassmorphism Variables */
+    --glass-primary: rgba(255, 255, 255, 0.08);
+    --glass-secondary: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-hover: rgba(255, 255, 255, 0.15);
+    
+    /* Spacing System */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 * {
@@ -15,114 +43,293 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--background-dark);
+    background: var(--background-gradient);
     color: var(--text-color-light);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Luxury Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* Enhanced Glassmorphism Effects */
+.glass-card {
+    background: var(--glass-primary);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+}
+
+.glass-card:hover {
+    background: var(--glass-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card:active {
+    transform: translateY(-2px);
 }
 
 .page-container {
     min-height: 100vh;
-    padding: 40px;
+    padding: var(--spacing-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
-.logo-placeholder {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--text-color-light);
+.page-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.logo-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.main-logo {
+    max-width: 200px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: all var(--transition-normal);
+}
+
+.main-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+    .main-logo {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-logo {
+        max-width: 120px;
+    }
 }
 
 .content-wrapper {
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 4em;
+    font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 700;
     color: var(--secondary-color);
-    margin-bottom: 5px;
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
 }
 
-.sub-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2em;
+.subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     font-weight: 400;
-    color: var(--text-color-light);
-    margin-bottom: 40px;
+    color: var(--text-color-muted);
+    margin-bottom: var(--spacing-xl);
+    font-style: italic;
+    letter-spacing: 0.1em;
 }
 
 .instruction {
-    font-size: 1.2em;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-style: italic;
     color: var(--text-color-light);
-    margin-bottom: 30px;
-}
-
-/* Glassmorphism Effect */
-.glass-card {
-    background: var(--glass-effect-color);
-    border: 1px solid var(--glass-border-color);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: var(--spacing-xl);
+    font-weight: 300;
+    letter-spacing: 0.05em;
 }
 
 .wine-type-selection {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) 0;
 }
 
 .wine-type-card {
     text-decoration: none;
     color: inherit;
-    padding: 30px 40px;
-    min-width: 200px;
-    transition: transform 0.3s ease;
+    padding: var(--spacing-xl);
+    min-height: 200px;
+    transition: all var(--transition-normal);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.wine-type-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--glass-secondary) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.wine-type-card:hover::after {
+    opacity: 1;
 }
 
 .wine-type-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px) scale(1.02);
+}
+
+.wine-type-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: transform var(--transition-normal);
+}
+
+.wine-type-card:hover img {
+    transform: scale(1.1);
 }
 
 .wine-type-card h3 {
-    margin-top: 15px;
-    font-size: 1.1em;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--text-color-light);
+    margin-top: var(--spacing-sm);
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
 }
 
+/* Regions Page Layout */
 .regions-grid {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.italy-map {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--glass-primary);
+    padding: var(--spacing-lg);
 }
 
 .italy-map img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    transition: transform var(--transition-slow);
+    filter: sepia(0.1) contrast(1.1);
+}
+
+.italy-map:hover img {
+    transform: scale(1.02);
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: var(--spacing-lg);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.map-caption {
+    color: var(--text-color-light);
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+    opacity: 0.9;
 }
 
 .region-buttons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: var(--spacing-sm);
+}
+
+.region-buttons-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.region-buttons-container::-webkit-scrollbar-track {
+    background: var(--glass-primary);
+    border-radius: var(--radius-sm);
+}
+
+.region-buttons-container::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: var(--radius-sm);
 }
 
 .region-button {
@@ -130,60 +337,599 @@ body {
     color: var(--text-color-light);
     font-family: 'Playfair Display', serif;
     font-size: 1.1em;
-    padding: 15px 30px;
+    font-weight: 500;
+    padding: var(--spacing-md) var(--spacing-lg);
     display: block;
-    width: 250px;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    transition: all var(--transition-normal);
+    letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+}
+
+.region-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--glass-hover), transparent);
+    transition: left var(--transition-slow);
+}
+
+.region-button:hover::before {
+    left: 100%;
 }
 
 .region-button:hover {
-    background-color: var(--secondary-color);
+    background: var(--glass-hover);
+    transform: translateX(4px);
+    color: var(--secondary-color);
 }
 
+/* Wines Page Layout */
 .wines-content {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-xxl);
+    align-items: start;
     text-align: left;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .filters-sidebar {
-    width: 250px;
-    padding: 20px;
+    padding: var(--spacing-lg);
+    position: sticky;
+    top: var(--spacing-lg);
+    max-height: calc(100vh - var(--spacing-xl));
+    overflow-y: auto;
+}
+
+.filters-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.filter-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.filter-group label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--text-color-light);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9em;
+    letter-spacing: 0.02em;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--glass-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-color-light);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-normal);
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    background: var(--glass-hover);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
 }
 
 .wine-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
 }
 
 .wine-card {
     text-decoration: none;
     color: inherit;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease;
+    padding: var(--spacing-lg);
+    text-align: left;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wine-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary-color), transparent);
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.wine-card:hover::before {
+    transform: scaleX(1);
 }
 
 .wine-card:hover {
-    transform: translateY(-10px);
-}
-
-.wine-card img {
-    max-width: 150px;
-    height: auto;
-    margin-bottom: 15px;
+    transform: translateY(-6px);
 }
 
 .wine-card h4 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
-    font-weight: 700;
-    margin-bottom: 5px;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color-light);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
 }
 
-.wine-card p {
+.wine-card .producer {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-xs);
+    font-style: italic;
+}
+
+.wine-card .vintage {
     font-size: 0.9em;
-    color: #c0c0c0;
+    color: var(--text-color-muted);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 300;
+}
+
+.wine-card .description {
+    font-size: 0.9em;
+    color: var(--text-color-muted);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1;
+}
+
+.wine-card .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-top: auto;
+}
+
+.wine-card .organic-badge {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 0.7em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-xs);
+    letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .wine-type-selection {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    .wine-type-card {
+        min-height: 200px;
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 1200px) {
+    .regions-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .italy-map {
+        order: 2;
+    }
+    
+    .region-buttons-container {
+        order: 1;
+        max-height: none;
+    }
+    
+    .wines-content {
+        grid-template-columns: 250px 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        padding: var(--spacing-md);
+    }
+    
+    .content-wrapper {
+        padding: var(--spacing-md);
+    }
+    
+    .wine-type-selection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .wine-type-card {
+        padding: var(--spacing-lg);
+        min-height: 160px;
+    }
+    
+    .wine-type-card h3 {
+        font-size: 1.1em;
+    }
+    
+    .regions-grid {
+        gap: var(--spacing-lg);
+    }
+    
+    .region-buttons-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+    
+    .region-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 1em;
+    }
+    
+    .wines-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .filters-sidebar {
+        position: static;
+        max-height: none;
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .wine-cards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .wine-card {
+        padding: var(--spacing-md);
+        min-height: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: var(--spacing-sm);
+    }
+    
+    .content-wrapper {
+        padding: var(--spacing-sm);
+    }
+    
+    .wine-type-selection {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .wine-type-card {
+        padding: var(--spacing-md);
+        min-height: 160px;
+    }
+    
+    .wine-type-card img {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .wine-type-card h3 {
+        font-size: 1em;
+    }
+    
+    .main-title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+    
+    .sub-title {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+    }
+    
+    .instruction {
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+    }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--glass-border);
+    border-top: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus States */
+.wine-type-card:focus,
+.region-button:focus,
+.wine-card:focus {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --glass-primary: rgba(255, 255, 255, 0.2);
+        --glass-border: rgba(255, 255, 255, 0.4);
+        --text-color-muted: var(--text-color-light);
+    }
+}
+
+/* Wine Details Page */
+.wine-details-page .content-wrapper {
+    max-width: 1200px;
+    text-align: left;
+}
+
+.wine-details-page .logo-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.wine-details-page .main-logo {
+    max-width: 150px;
+}
+
+.wine-details-container {
+    width: 100%;
+}
+
+.wine-details-header {
+    margin-bottom: var(--spacing-xxl);
+    text-align: center;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: none;
+    background: var(--glass-primary);
+    border-radius: var(--radius-md);
+}
+
+.back-button:hover {
+    background: var(--glass-hover);
+    transform: translateX(-4px);
+}
+
+.wine-details-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+.wine-producer {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5em;
+    color: var(--text-color-muted);
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+.wine-details-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-xxl);
+    align-items: start;
+}
+
+.wine-image-section {
+    position: sticky;
+    top: var(--spacing-lg);
+}
+
+.wine-image-placeholder {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--glass-primary) 0%, var(--glass-secondary) 100%);
+}
+
+.wine-icon {
+    font-size: 4rem;
+    opacity: 0.7;
+}
+
+.wine-badges {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.wine-type-badge {
+    display: inline-block;
+    background: var(--glass-primary);
+    color: var(--text-color-light);
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--glass-border);
+}
+
+.wine-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.wine-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.info-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.05em;
+}
+
+.info-card p {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    font-weight: 500;
+}
+
+.wine-description,
+.wine-technical {
+    padding: var(--spacing-xl);
+}
+
+.wine-description h3,
+.wine-technical h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: 0.05em;
+}
+
+.wine-description p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: var(--text-color-light);
+    font-style: italic;
+}
+
+.technical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.technical-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.technical-label {
+    font-weight: 500;
+    color: var(--text-color-muted);
+}
+
+.technical-item span:last-child {
+    color: var(--text-color-light);
+    font-weight: 400;
+}
+
+/* Responsive Design for Wine Details */
+@media (max-width: 768px) {
+    .wine-details-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .wine-image-section {
+        position: static;
+        order: 2;
+    }
+    
+    .wine-info-section {
+        order: 1;
+    }
+    
+    .wine-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .technical-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .wine-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .wine-image-placeholder {
+        height: 300px;
+    }
+    
+    .wine-icon {
+        font-size: 3rem;
+    }
 }
