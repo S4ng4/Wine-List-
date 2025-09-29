@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select a Region</title>
+    <title>Select a Region - Gran Caffè L'Aquila</title>
+    <link rel="icon" type="image/png" href="gcaLogo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="page-container regions-page">
-        <div class="logo-placeholder">Gran Caffè L'Aquila Logo</div>
+        <div class="logo-container">
+            <img src="gcaLogo.png" alt="Gran Caffè L'Aquila Logo" class="main-logo">
+        </div>
         <div class="content-wrapper">
             <h1 class="main-title">THE DIVINE SIGH</h1>
             <h2 class="sub-title" id="wine-type-title"></h2>
+            <p class="instruction">SELECT YOUR REGION</p>
             <div class="regions-grid">
                 <div class="italy-map">
-                    <img src="italia.png" alt="Map of Italy">
+                    <img src="italia.png" alt="Map of Italy" id="italy-map-image">
+                    <div class="map-overlay">
+                        <p class="map-caption">Discover the finest wines from Italy's most renowned regions</p>
+                    </div>
                 </div>
                 <div class="region-buttons-container">
-                    <div class="region-buttons">
-                        </div>
+                    <div class="region-buttons" id="region-buttons">
+                        <!-- Region buttons will be dynamically generated here -->
+                    </div>
                 </div>
             </div>
         </div>
