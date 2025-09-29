@@ -203,7 +203,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: inherit;
     padding: var(--spacing-xl);
-    min-height: 200px;
+    min-height: 240px;
     transition: all var(--transition-normal);
     display: flex;
     flex-direction: column;
@@ -212,10 +212,115 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     position: relative;
     overflow: hidden;
+    background: var(--glass-primary);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Background images for each wine type */
+.wine-type-card[href*="ROSSO"] {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+    position: relative;
+}
+
+.wine-type-card[href*="ROSSO"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    border-radius: var(--radius-lg);
+}
+
+.wine-type-card[href*="BIANCO"] {
+    background: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 50%, #DDBEA9 100%);
+    position: relative;
+}
+
+.wine-type-card[href*="BIANCO"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    border-radius: var(--radius-lg);
+}
+
+.wine-type-card[href*="ROSATO"] {
+    background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFD1DC 100%);
+    position: relative;
+}
+
+.wine-type-card[href*="ROSATO"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    border-radius: var(--radius-lg);
+}
+
+.wine-type-card[href*="BOLLICINE"] {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+    position: relative;
+}
+
+.wine-type-card[href*="BOLLICINE"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    border-radius: var(--radius-lg);
+}
+
+/* Fallback gradients if images don't load */
+.wine-type-card[href*="ROSSO"]:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+}
+
+.wine-type-card[href*="BIANCO"]:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 50%, #DDBEA9 100%);
+}
+
+.wine-type-card[href*="ROSATO"]:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFD1DC 100%);
+}
+
+.wine-type-card[href*="BOLLICINE"]:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
 }
 
 
 
+/* Overlay for text readability - applied after image overlay */
 .wine-type-card::after {
     content: '';
     position: absolute;
@@ -223,40 +328,53 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, var(--glass-secondary) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity var(--transition-normal);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.6) 100%);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+    z-index: 1;
 }
 
 .wine-type-card:hover::after {
-    opacity: 1;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
 }
 
 .wine-type-card:hover {
     transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
+
 
 .wine-type-card img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: var(--spacing-md);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-    transition: transform var(--transition-normal);
-}
-
-.wine-type-card:hover img {
-    transform: scale(1.1);
+    display: none;
 }
 
 .wine-type-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
-    font-weight: 600;
+    font-size: 1.5em;
+    font-weight: 700;
     color: var(--text-color-light);
-    margin-top: var(--spacing-sm);
+    margin-top: 0;
     letter-spacing: 0.05em;
     position: relative;
-    z-index: 1;
+    z-index: 3;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.wine-type-card:hover h3 {
+    color: var(--secondary-color);
+    background: rgba(212, 175, 55, 0.3);
+    border-color: rgba(212, 175, 55, 0.5);
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
 }
 
 /* Regions Page Layout */
@@ -576,7 +694,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .wine-type-card {
         padding: var(--spacing-lg);
-        min-height: 160px;
+        min-height: 200px;
     }
     
     .wine-type-card h3 {
@@ -640,8 +758,8 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .wine-type-card img {
-        width: 55px;
-        height: 55px;
+        width: 65px;
+        height: 65px;
     }
     
     .wine-type-card h3 {
