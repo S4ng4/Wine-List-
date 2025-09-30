@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Caffè L'Aquila | Wine Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        secondary: '#d4af37',
+                        accent: '#f4e4bc',
+                        'text-light': '#f8f6f0',
+                        'text-muted': '#c7b299',
+                        'background-dark': '#0a0a0a',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'cormorant': ['Cormorant Garamond', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .art-deco-border {
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            position: relative;
+        }
+        
+        .art-deco-border::before,
+        .art-deco-border::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #d4af37;
+            transform: rotate(45deg);
+        }
+        
+        .art-deco-border::before {
+            top: -7px;
+            left: 0;
+        }
+        
+        .art-deco-border::after {
+            bottom: -7px;
+            right: 0;
+        }
+        
+        .geometric-pattern {
+            background-image: 
+                linear-gradient(30deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(150deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(30deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(150deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(60deg, rgba(212, 175, 55, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(212, 175, 55, 0.05) 75%, rgba(212, 175, 55, 0.05)),
+                linear-gradient(60deg, rgba(212, 175, 55, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(212, 175, 55, 0.05) 75%, rgba(212, 175, 55, 0.05));
+            background-size: 40px 70px;
+            background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-text-light font-montserrat geometric-pattern">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <!-- Header Section -->
+        <header class="w-full max-w-6xl text-center mb-16 animate-fade-in">
+            <div class="mb-10">
+                <div class="inline-block px-6 py-3 border border-secondary text-secondary font-playfair text-xl tracking-wider mb-8 art-deco-border">
+                    G.C. L'AQUILA
+                </div>
+            </div>
+            
+            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold text-secondary mb-6 animate-slide-up">
+                The Gran Caffè L'Aquila
+            </h1>
+            <p class="font-cormorant text-xl md:text-2xl text-text-muted italic mb-12 animate-slide-up">
+                Wine Experience
+            </p>
+            
+            <div class="max-w-3xl mx-auto mb-16">
+                <p class="text-lg md:text-xl text-center text-text-light leading-relaxed">
+                    We believe selecting wine should be an effortless journey. Our interactive Digital Wine List is designed to equip you with the knowledge of a Dining Consultant, ensuring you find the perfect balance for your meal every time.
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="w-full max-w-6xl">
+            <!-- Features Section -->
+            <section class="mb-20">
+                <h2 class="font-playfair text-3xl md:text-4xl text-center text-accent mb-12">Unlock Your Perfect Pairing</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="glass-effect rounded-lg p-6 transition-all duration-300 hover:transform hover:-translate-y-2">
+                        <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-playfair text-xl text-secondary text-center mb-4">Explore by Italian Region</h3>
+                        <p class="text-text-light text-center mb-4">Our list is intentionally structured around the 20 diverse regions of Italy. This is the most authentic way to explore wine, as the place dictates the style, grape, and food pairing tradition.</p>
+                        <p class="text-text-muted text-center">Discover regional specialties—from the crisp whites of Friuli to the bold reds of Piedmont—and see which wines are featured from each area.</p>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="glass-effect rounded-lg p-6 transition-all duration-300 hover:transform hover:-translate-y-2">
+                        <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-playfair text-xl text-secondary text-center mb-4">Filter by Style & Body</h3>
+                        <p class="text-text-light text-center mb-4">Our intuitive filters allow you to search beyond just the grape name. Use these tools to find exactly what you like:</p>
+                        <ul class="text-text-muted text-sm space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">•</span>
+                                <span><strong>Body Weight:</strong> Filter by Light, Medium, or Full Body (the Olive Oil Analogy).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">•</span>
+                                <span><strong>Acidity:</strong> Choose between food-friendly Old World styles and fruit-forward New World styles.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">•</span>
+                                <span><strong>Price & Vintage:</strong> Easily narrow down your search by budget or harvest year.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="glass-effect rounded-lg p-6 transition-all duration-300 hover:transform hover:-translate-y-2">
+                        <div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-playfair text-xl text-secondary text-center mb-4">Expert Knowledge at Your Fingertips</h3>
+                        <p class="text-text-light text-center mb-4">Each wine entry provides the key information you need without being overly technical. You will find:</p>
+                        <ul class="text-text-muted text-sm space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">•</span>
+                                <span><strong>Tasting Notes:</strong> Key aromas and flavor profiles.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">•</span>
+                                <span><strong>Pairing Suggestions:</strong> Recommended dishes from our menu.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary mr-2">•</span>
+                                <span><strong>Italian Designations:</strong> Clear explanations of DOC, DOCG, and IGT quality guarantees.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Philosophy Section -->
+            <section class="mb-20">
+                <h2 class="font-playfair text-3xl md:text-4xl text-center text-secondary mb-4">The Art of Balance: Pairing by Weight</h2>
+                <p class="text-center max-w-3xl mx-auto mb-12 text-text-light">
+                    The fundamental rule for pairing is simple: Match the weight (or Body) of the wine to the weight of your dish. We use the Olive Oil Analogy to help you understand this:
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Light Body -->
+                    <div class="glass-effect rounded-lg p-6 text-center">
+                        <h4 class="font-playfair text-xl text-secondary mb-4">Light Body</h4>
+                        <p class="text-text-light mb-2"><strong>Mouth-Feel:</strong> Like a delicate, Light Olive Oil. Very refreshing.</p>
+                        <p class="text-text-muted"><strong>Pairing:</strong> Seafood with lemon, light soups, salads.</p>
+                    </div>
+                    
+                    <!-- Medium Body -->
+                    <div class="glass-effect rounded-lg p-6 text-center">
+                        <h4 class="font-playfair text-xl text-secondary mb-4">Medium Body</h4>
+                        <p class="text-text-light mb-2"><strong>Mouth-Feel:</strong> Like a Standard Olive Oil. Versatile and balanced.</p>
+                        <p class="text-text-muted"><strong>Pairing:</strong> Tomato-based pasta, grilled chicken, risotto.</p>
+                    </div>
+                    
+                    <!-- Full Body -->
+                    <div class="glass-effect rounded-lg p-6 text-center">
+                        <h4 class="font-playfair text-xl text-secondary mb-4">Full Body</h4>
+                        <p class="text-text-light mb-2"><strong>Mouth-Feel:</strong> Like a Robust Extra Virgin Oil. Dense and complex.</p>
+                        <p class="text-text-muted"><strong>Pairing:</strong> Steak, lamb, game meats, rich sauces.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA Section -->
+            <section class="text-center">
+                <a href="https://s4ng4.github.io/Wine-List-/" class="inline-block gold-gradient text-primary font-bold py-4 px-10 rounded-lg text-lg transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1">
+                    Begin Your Wine Journey Now
+                </a>
+                <p class="mt-4 text-text-muted">Click to access the full interactive Gran Caffè L'Aquila Wine List.</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
