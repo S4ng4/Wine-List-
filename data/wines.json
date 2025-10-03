@@ -143,12 +143,12 @@
     {
       "wine_number": "114",
       "wine_name": "CIRO BIANCO",
-      "wine_producer": "LIBRANDI",
-      "wine_vintage": "(CIRO DOC 2022)",
-      "wine_price": "46",
+      "wine_producer": "VUMBACCA",
+      "wine_vintage": "(CIRO DOC 2023)",
+      "wine_price": "48",
       "wine_price_split": null,
       "wine_price_glass": null,
-      "wine_price_bottle": "46",
+      "wine_price_bottle": "48",
       "wine_description": "HISTORIC CALABRIAN GRECO BIANCO PRODUCED IN THE HISTORIC COASTAL CIRO WINE ZONE ON THE EAST COAST",
       "region": "CALABRIA",
       "wine_type": "BIANCO",
@@ -164,7 +164,7 @@
       "wine_number": "115",
       "wine_name": "PECORELLO",
       "wine_producer": "IPPOLITO*",
-      "wine_vintage": "(CALABRIA IGT/CIRO 2022)",
+      "wine_vintage": "(CALABRIA IGT/CIRO 2023)",
       "wine_price": "49",
       "wine_price_split": null,
       "wine_price_glass": null,
@@ -184,7 +184,7 @@
       "wine_number": "125",
       "wine_name": "CIRO ROSATO",
       "wine_producer": "LIBRANDI",
-      "wine_vintage": "(CIRO DOC 2023)",
+      "wine_vintage": "(CIRO DOC 2024)",
       "wine_price": "46",
       "wine_price_split": null,
       "wine_price_glass": null,
@@ -219,6 +219,26 @@
       "varietals": "60% Fiano, 40% Falanghina",
       "soil": "Volcanic tuff and clay",
       "elevation": "400-600m"
+    },
+    {
+      "wine_number": "131",
+      "wine_name": "GRECO DI MATERA",
+      "wine_producer": "BATTIFRAN0",
+      "wine_vintage": "(MATERA DOC 2023)",
+      "wine_price": "SOLD OUT",
+      "wine_price_split": null,
+      "wine_price_glass": null,
+      "wine_price_bottle": "SOLD OUT",
+      "wine_description": "",
+      "region": "BASILICATA",
+      "wine_type": "BIANCO",
+      "category": "VINI BIANCHI E ROSATI",
+      "organic": false,
+      "alcohol": null,
+      "aging": null,
+      "varietals": null,
+      "soil": null,
+      "elevation": null
     },
     {
       "wine_number": "135",
@@ -4262,4 +4282,5 @@
   }
 ]
 }
+
 
