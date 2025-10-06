@@ -315,11 +315,11 @@ function performGlobalSearch(searchTerm) {
 
     const term = searchTerm.toLowerCase().trim();
     const results = allWineData.wines.filter(wine => {
-        return wine.wine_name.toLowerCase().includes(term) ||
-               wine.wine_producer.toLowerCase().includes(term) ||
-               wine.region.toLowerCase().includes(term) ||
-               wine.wine_type.toLowerCase().includes(term) ||
-               (wine.wine_description && wine.wine_description.toLowerCase().includes(term));
+        return (wine.wine_name && wine.wine_name.toLowerCase().includes(term)) ||
+       (wine.wine_producer && wine.wine_producer.toLowerCase().includes(term)) ||
+       (wine.region && wine.region.toLowerCase().includes(term)) ||
+       (wine.wine_type && wine.wine_type.toLowerCase().includes(term)) ||
+       (wine.wine_description && wine.wine_description.toLowerCase().includes(term));
     });
 
     displaySearchResults(results, searchTerm);
