@@ -265,4 +265,29 @@ function renderWines(wines) {
         });
     }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('wine-search-input');
+    const filterRegionBtn = document.getElementById('filter-region-btn');
+    const filterVarietalBtn = document.getElementById('filter-varietal-btn');
 
+    if (searchInput) {
+        searchInput.addEventListener('input', function (e) {
+            // You can implement search logic here
+            // Example: console.log('Searching for:', e.target.value);
+        });
+    }
+
+    if (filterRegionBtn) {
+        filterRegionBtn.addEventListener('click', function () {
+            // Implement region filter logic here
+            // Example: alert('Filter by Region clicked!');
+        });
+    }
+
+    if (filterVarietalBtn) {
+        filterVarietalBtn.addEventListener('click', function () {
+            // Implement varietal filter logic here
+            // Example: alert('Filter by Varietal clicked!');
+        });
+    }
+});
