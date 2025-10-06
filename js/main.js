@@ -270,24 +270,174 @@ document.addEventListener('DOMContentLoaded', function () {
     const filterRegionBtn = document.getElementById('filter-region-btn');
     const filterVarietalBtn = document.getElementById('filter-varietal-btn');
 
+    // Initialize search functionality
+    initializeSearchFunctionality();
+
     if (searchInput) {
         searchInput.addEventListener('input', function (e) {
-            // You can implement search logic here
-            // Example: console.log('Searching for:', e.target.value);
+            performGlobalSearch(e.target.value);
         });
     }
 
     if (filterRegionBtn) {
         filterRegionBtn.addEventListener('click', function () {
-            // Implement region filter logic here
-            // Example: alert('Filter by Region clicked!');
+            showRegionFilterModal();
         });
     }
 
     if (filterVarietalBtn) {
         filterVarietalBtn.addEventListener('click', function () {
-            // Implement varietal filter logic here
-            // Example: alert('Filter by Varietal clicked!');
+            showVarietalFilterModal();
         });
     }
 });
+
+// Global search functionality
+let allWineData = null;
+
+async function initializeSearchFunctionality() {
+    try {
+        const response = await fetch('data/wines.json');
+        if (response.ok) {
+            allWineData = await response.json();
+            console.log('Wine data loaded for global search:', allWineData.wines.length, 'wines');
+        }
+    } catch (error) {
+        console.error('Failed to load wine data for search:', error);
+    }
+}
+
+function performGlobalSearch(searchTerm) {
+    if (!allWineData || !searchTerm.trim()) {
+        clearSearchResults();
+        return;
+    }
+
+    const term = searchTerm.toLowerCase().trim();
+    const results = allWineData.wines.filter(wine => {
+        return wine.wine_name.toLowerCase().includes(term) ||
+               wine.wine_producer.toLowerCase().includes(term) ||
+               wine.region.toLowerCase().includes(term) ||
+               wine.wine_type.toLowerCase().includes(term) ||
+               (wine.wine_description && wine.wine_description.toLowerCase().includes(term));
+    });
+
+    displaySearchResults(results, searchTerm);
+}
+
+function displaySearchResults(results, searchTerm) {
+    // Remove existing search results
+    clearSearchResults();
+
+    if (results.length === 0) {
+        showNoResultsMessage(searchTerm);
+        return;
+    }
+
+    // Create search results container
+    const resultsContainer = document.createElement('div');
+    resultsContainer.id = 'search-results';
+    resultsContainer.className = 'search-results-container glass-card';
+    
+    const title = document.createElement('h3');
+    title.textContent = `Search Results for "${searchTerm}" (${results.length} found)`;
+    title.className = 'search-results-title';
+    
+    resultsContainer.appendChild(title);
+
+    // Group results by wine type
+    const groupedResults = groupResultsByType(results);
+    
+    Object.keys(groupedResults).forEach(wineType => {
+        const typeSection = document.createElement('div');
+        typeSection.className = 'search-results-type';
+        
+        const typeHeader = document.createElement('h4');
+        typeHeader.textContent = wineType.toUpperCase() + ' WINES';
+        typeHeader.className = 'search-results-type-header';
+        typeSection.appendChild(typeHeader);
+
+        const winesGrid = document.createElement('div');
+        winesGrid.className = 'search-results-grid';
+
+        groupedResults[wineType].forEach(wine => {
+            const wineCard = createWineCard(wine);
+            winesGrid.appendChild(wineCard);
+        });
+
+        typeSection.appendChild(winesGrid);
+        resultsContainer.appendChild(typeSection);
+    });
+
+    // Insert after the search bar
+    const searchBar = document.querySelector('.wine-search-filter-bar');
+    if (searchBar && searchBar.parentNode) {
+        searchBar.parentNode.insertBefore(resultsContainer, searchBar.nextSibling);
+    }
+}
+
+function groupResultsByType(results) {
+    return results.reduce((groups, wine) => {
+        const type = wine.wine_type;
+        if (!groups[type]) {
+            groups[type] = [];
+        }
+        groups[type].push(wine);
+        return groups;
+    }, {});
+}
+
+function createWineCard(wine) {
+    const card = document.createElement('a');
+    card.className = 'wine-card glass-card';
+    card.href = `wine-details.html?id=${wine.wine_number}`;
+    card.innerHTML = `
+        <h4>${wine.wine_name}</h4>
+        <div class="producer">${wine.wine_producer}</div>
+        <div class="vintage">${wine.wine_vintage}</div>
+        <div class="region">${wine.region}</div>
+        <div class="description">${wine.wine_description || 'A fine selection from our curated collection.'}</div>
+        <div class="price">${wine.wine_price_bottle ? '$' + wine.wine_price_bottle : 'Price upon request'}</div>
+        ${wine.organic ? '<span class="organic-badge">ORGANIC</span>' : ''}
+    `;
+    return card;
+}
+
+function clearSearchResults() {
+    const existingResults = document.getElementById('search-results');
+    if (existingResults) {
+        existingResults.remove();
+    }
+}
+
+function showNoResultsMessage(searchTerm) {
+    const resultsContainer = document.createElement('div');
+    resultsContainer.id = 'search-results';
+    resultsContainer.className = 'search-results-container glass-card no-results';
+    
+    resultsContainer.innerHTML = `
+        <h3>No Results Found</h3>
+        <p>No wines found matching "${searchTerm}". Try searching for:</p>
+        <ul>
+            <li>Wine name (e.g., "Chianti", "Barolo")</li>
+            <li>Producer name</li>
+            <li>Region (e.g., "Tuscany", "Piedmont")</li>
+            <li>Wine type (e.g., "Red", "White", "Sparkling")</li>
+        </ul>
+    `;
+
+    const searchBar = document.querySelector('.wine-search-filter-bar');
+    if (searchBar && searchBar.parentNode) {
+        searchBar.parentNode.insertBefore(resultsContainer, searchBar.nextSibling);
+    }
+}
+
+function showRegionFilterModal() {
+    // Simple implementation - redirect to regions page
+    window.location.href = 'regions.html?type=ROSSO';
+}
+
+function showVarietalFilterModal() {
+    // Simple implementation - show alert for now
+    alert('Varietal filtering will be available soon! For now, please browse by wine type and region.');
+}
