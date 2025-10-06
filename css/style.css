@@ -352,20 +352,20 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     font-size: 1.5em;
     font-weight: 700;
-    color: var(--text-color-light);
+    color: #d4af3c;
     margin-top: 0;
     letter-spacing: 0.05em;
     position: relative;
     z-index: 3;
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.0);/* background: rgba(0, 0, 0, 0.5) */
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-md);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(1px);/*15px*/
     -webkit-backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 255, 255, 0.2);
     transition: all var(--transition-normal);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .wine-type-card:hover h3 {
