@@ -643,6 +643,35 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: var(--spacing-xs);
     letter-spacing: 0.05em;
 }
+.wine-search-filter-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.wine-search-filter-bar input[type="text"] {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.wine-search-filter-bar button {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background: #8b0000;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.wine-search-filter-bar button:hover {
+    background: #a83232;
+}
 
 /* Responsive Design */
 @media (max-width: 1400px) {
