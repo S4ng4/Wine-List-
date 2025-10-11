@@ -431,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-sm);
-    max-height: 600px;
+    max-height: 800px;
     overflow-y: auto;
     padding-right: var(--spacing-sm);
 }
