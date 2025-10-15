@@ -3169,7 +3169,7 @@
 "aging": null,
 "varietals":"SANGIOVESE/SYRAH/CAB FRANC",
 "soil": null,
-"elevation": null,
+"elevation": null
 },
 {
 "wine_number": "558",
@@ -3189,7 +3189,7 @@
 "aging": null,
 "varietals":"SANGIOVESE,SYRAH,PETIT VERDOT",
 "soil": null,
-"elevation": null,
+"elevation": null
 },
 {
 "wine_number": "559",
@@ -3209,7 +3209,7 @@
 "aging": null,
 "varietals":null,
 "soil": null,
-"elevation": null,
+"elevation": null
 },
 {
 "wine_number": "560",
@@ -3229,7 +3229,7 @@
 "aging": null,
 "varietals":"MERLOT CAB FRANC",
 "soil": null,
-"elevation": null,
+"elevation": null
 },
 {
 "wine_number": "561",
@@ -3249,7 +3249,7 @@
 "aging": null,
 "varietals":null,
 "soil": null,
-"elevation": null,
+"elevation": null
 },
 {
 "wine_number": "562",
@@ -3269,7 +3269,7 @@
 "aging": null,
 "varietals":null,
 "soil": null,
-"elevation": null,
+"elevation": null
 },
 {
 "wine_number": "563",
@@ -3289,7 +3289,7 @@
 "aging": null,
 "varietals":null,
 "soil": null,
-"elevation": null,
+"elevation": null
 },
 {
 "wine_number": "563",
@@ -3309,9 +3309,8 @@
 "aging": null,
 "varietals":null,
 "soil": null,
-"elevation": null,
+"elevation": null
 },
-
 {
     "wine_number": "576",
     "wine_name": "CHIANTI CLASSICO",
@@ -4092,7 +4091,6 @@
     "soil": null,
     "elevation": null
   },
-  /**/
 {
 "wine_number": "640",
 "wine_name": "ASSISI ROSSO",
@@ -5655,3 +5653,4 @@
 }
 ]
 }
+
