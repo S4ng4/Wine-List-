@@ -17,12 +17,40 @@
             <div class="wines-content">
                 <aside class="filters-sidebar">
                     <h3>Filters</h3>
-                    </aside>
-                <div class="wine-cards-grid">
-                    </div>
+                </aside>
+                <div class="layout-toggle">
+                    <button id="card-view-btn">Card View</button>
+                    <button id="table-view-btn">Table View</button>
+                </div>
+                <div id="wine-cards-grid" class="wine-cards-grid">
+                    <!-- Card layout wines will be rendered here -->
+                </div>
+                <div id="wine-table-layout" class="wine-table-layout" style="display:none;">
+                    <!-- Table layout wines will be rendered here -->
+                    <table id="wine-table">
+                        <!-- Table rows will be injected by JS -->
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     <script src="js/main.js"></script>
+    <script>
+        // Layout switching logic
+        const cardViewBtn = document.getElementById('card-view-btn');
+        const tableViewBtn = document.getElementById('table-view-btn');
+        const cardGrid = document.getElementById('wine-cards-grid');
+        const tableLayout = document.getElementById('wine-table-layout');
+
+        cardViewBtn.addEventListener('click', function() {
+            cardGrid.style.display = '';
+            tableLayout.style.display = 'none';
+        });
+
+        tableViewBtn.addEventListener('click', function() {
+            cardGrid.style.display = 'none';
+            tableLayout.style.display = '';
+        });
+    </script>
 </body>
 </html>
