@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const regionsPage = document.querySelector('.regions-page');
     const winesPage = document.querySelector('.wines-page');
     const wineDetailsPage = document.querySelector('.wine-details-page');
+    const indexPage = document.querySelector('.index-page');
 
     if (regionsPage) {
         console.log('Loading regions page...');
@@ -13,9 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (wineDetailsPage) {
         console.log('Loading wine details page...');
         // Wine details page is handled by wine-details.js
-    } else {
+    } else if (indexPage) {
         console.log('Loading index page...');
-        // Index page doesn't need special loading
+        initializeIndexPage();
+    } else {
+        console.log('Loading default page...');
+        // Fallback for any other pages
     }
 });
 
@@ -293,7 +297,7 @@ function renderWines(wines) {
         }
     }
 }
-document.addEventListener('DOMContentLoaded', function () {
+function initializeIndexPage() {
     const searchInput = document.getElementById('wine-search-input');
     const filterRegionBtn = document.getElementById('filter-region-btn');
     const filterVarietalBtn = document.getElementById('filter-varietal-btn');
@@ -318,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
             showVarietalFilterModal();
         });
     }
-});
+}
 
 // Global search functionality
 let allWineData = null;
@@ -461,11 +465,138 @@ function showNoResultsMessage(searchTerm) {
 }
 
 function showRegionFilterModal() {
-    // Simple implementation - redirect to regions page
-    window.location.href = 'regions.html?type=ROSSO';
+    if (!allWineData) {
+        alert('Wine data is still loading. Please try again in a moment.');
+        return;
+    }
+
+    // Get all unique regions
+    const regions = [...new Set(allWineData.wines.map(wine => wine.region))].sort();
+    
+    // Create modal HTML
+    const modalHTML = `
+        <div id="region-modal" class="filter-modal-overlay">
+            <div class="filter-modal glass-card">
+                <div class="modal-header">
+                    <h3>Filter by Region</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-content">
+                    <p>Select a wine type and region to browse:</p>
+                    <div class="wine-type-selection-modal">
+                        <a href="regions.html?type=ROSSO" class="wine-type-card-modal">
+                            <img src="1.png" alt="Red Wine Icon">
+                            <h4>RED WINES</h4>
+                        </a>
+                        <a href="regions.html?type=BIANCO" class="wine-type-card-modal">
+                            <img src="2.png" alt="White Wine Icon">
+                            <h4>WHITE WINES</h4>
+                        </a>
+                        <a href="regions.html?type=ROSATO" class="wine-type-card-modal">
+                            <img src="3.png" alt="Rosé Wine Icon">
+                            <h4>ROSÉ WINES</h4>
+                        </a>
+                        <a href="regions.html?type=BOLLICINE" class="wine-type-card-modal">
+                            <img src="4.png" alt="Sparkling Wine Icon">
+                            <h4>SPARKLING</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add modal to page
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Add event listeners
+    const modal = document.getElementById('region-modal');
+    const closeBtn = modal.querySelector('.modal-close');
+    
+    closeBtn.addEventListener('click', closeRegionModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeRegionModal();
+        }
+    });
+    
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeRegionModal() {
+    const modal = document.getElementById('region-modal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = '';
+    }
 }
 
 function showVarietalFilterModal() {
-    // Simple implementation - show alert for now
-    alert('Varietal filtering will be available soon! For now, please browse by wine type and region.');
+    if (!allWineData) {
+        alert('Wine data is still loading. Please try again in a moment.');
+        return;
+    }
+
+    // Get all unique varietals
+    const varietals = [...new Set(allWineData.wines.map(wine => wine.varietals).filter(v => v))].sort();
+    
+    if (varietals.length === 0) {
+        alert('No varietal information available. Please browse by wine type and region instead.');
+        return;
+    }
+
+    // Create modal HTML
+    const modalHTML = `
+        <div id="varietal-modal" class="filter-modal-overlay">
+            <div class="filter-modal glass-card">
+                <div class="modal-header">
+                    <h3>Filter by Varietal</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-content">
+                    <p>Select a varietal to search for wines:</p>
+                    <div class="varietal-list">
+                        ${varietals.map(varietal => 
+                            `<button class="varietal-btn glass-card" onclick="searchByVarietal('${varietal}')">${varietal}</button>`
+                        ).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add modal to page
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Add event listeners
+    const modal = document.getElementById('varietal-modal');
+    const closeBtn = modal.querySelector('.modal-close');
+    
+    closeBtn.addEventListener('click', closeVarietalModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeVarietalModal();
+        }
+    });
+    
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeVarietalModal() {
+    const modal = document.getElementById('varietal-modal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = '';
+    }
+}
+
+function searchByVarietal(varietal) {
+    closeVarietalModal();
+    const searchInput = document.getElementById('wine-search-input');
+    if (searchInput) {
+        searchInput.value = varietal;
+        performGlobalSearch(varietal);
+    }
 }
