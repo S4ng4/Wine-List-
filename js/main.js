@@ -567,7 +567,7 @@ function showVarietalFilterModal() {
                     <p>Select a varietal to search for wines:</p>
                     <div class="varietal-list">
                         ${varietals.map((varietal, index) => 
-                            `<button class="varietal-btn glass-card" data-varietal="${index}">${varietal}</button>`
+                            `<button class="varietal-btn glass-card">${varietal}</button>`
                         ).join('')}
                     </div>
                 </div>
@@ -593,8 +593,8 @@ function showVarietalFilterModal() {
     const varietalButtons = modal.querySelectorAll('.varietal-btn');
     varietalButtons.forEach((button, index) => {
         button.addEventListener('click', function() {
-            const varietal = varietals[index];
-            searchByVarietal(varietal);
+            const varietalText = button.textContent;
+            searchByVarietal(varietalText);
         });
     });
     
@@ -622,3 +622,6 @@ function searchByVarietal(varietal) {
         console.log('Search input not found');
     }
 }
+
+// Make searchByVarietal globally accessible
+window.searchByVarietal = searchByVarietal;
