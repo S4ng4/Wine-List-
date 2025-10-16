@@ -552,7 +552,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .wine-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-lg);
     padding: var(--spacing-lg) 0;
 }
@@ -561,17 +561,19 @@ h1, h2, h3, h4, h5, h6 {
 .wine-table-layout {
     margin-top: var(--spacing-lg);
     overflow-x: auto;
+    background: var(--glass-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--glass-shadow);
 }
 
 #wine-table {
     width: 100%;
+    min-width: 800px;
     border-collapse: collapse;
-    background: var(--glass-primary);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: transparent;
 }
 
 #wine-table thead {
@@ -600,6 +602,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .wine-table-row:last-child td {
     border-bottom: none;
+}
+
+/* Table responsive adjustments */
+@media (min-width: 1025px) {
+    .wine-table-layout {
+        overflow-x: visible;
+    }
+    
+    #wine-table {
+        min-width: 100%;
+    }
+    
+    #wine-table th,
+    #wine-table td {
+        padding: var(--spacing-lg) var(--spacing-md);
+        white-space: nowrap;
+    }
+    
+    #wine-table td:nth-child(4) {
+        white-space: normal;
+        max-width: 300px;
+        word-wrap: break-word;
+    }
 }
 
 /* Wines Layout */
@@ -695,6 +720,38 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: var(--spacing-xs);
 }
 
+/* Tablet and Desktop Responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .wine-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    .wines-layout {
+        grid-template-columns: 280px 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (min-width: 1025px) {
+    .wine-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+    }
+    
+    .wines-layout {
+        grid-template-columns: 320px 1fr;
+        gap: var(--spacing-xl);
+    }
+}
+
+@media (min-width: 1440px) {
+    .wine-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--spacing-xl);
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .wines-layout {
@@ -713,6 +770,26 @@ h1, h2, h3, h4, h5, h6 {
     
     .layout-toggle {
         justify-content: center;
+    }
+    
+    .wine-cards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .wine-table-layout {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #wine-table {
+        min-width: 700px;
+    }
+    
+    #wine-table th,
+    #wine-table td {
+        padding: var(--spacing-sm);
+        font-size: 0.9rem;
     }
 }
 
