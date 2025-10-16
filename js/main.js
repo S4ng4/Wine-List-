@@ -244,7 +244,9 @@ function clearFilters() {
 
 function renderWines(wines) {
     const winesGrid = document.querySelector('.wine-cards-grid');
+    const tableBody = document.querySelector('#wine-table tbody');
     
+    // Render card view
     winesGrid.innerHTML = '';
     if (wines.length === 0) {
         winesGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-color-muted); font-style: italic;">No wines found matching your criteria.</p>';
@@ -263,6 +265,32 @@ function renderWines(wines) {
             `;
             winesGrid.appendChild(card);
         });
+    }
+    
+    // Render table view
+    if (tableBody) {
+        tableBody.innerHTML = '';
+        if (wines.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="6" style="text-align: center; color: var(--text-color-muted); font-style: italic;">No wines found matching your criteria.</td>';
+            tableBody.appendChild(row);
+        } else {
+            wines.forEach(wine => {
+                const row = document.createElement('tr');
+                row.className = 'wine-table-row';
+                row.onclick = () => window.location.href = `wine-details.html?id=${wine.wine_number}`;
+                row.style.cursor = 'pointer';
+                row.innerHTML = `
+                    <td>${wine.wine_name}</td>
+                    <td>${wine.wine_producer}</td>
+                    <td>${wine.wine_vintage}</td>
+                    <td>${wine.wine_description || 'A fine selection from our curated collection.'}</td>
+                    <td>${wine.wine_price_bottle ? '$' + wine.wine_price_bottle : 'Price upon request'}</td>
+                    <td>${wine.organic ? 'Yes' : 'No'}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
     }
 }
 document.addEventListener('DOMContentLoaded', function () {
