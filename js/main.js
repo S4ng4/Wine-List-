@@ -351,7 +351,8 @@ function performGlobalSearch(searchTerm) {
        (wine.wine_producer && wine.wine_producer.toLowerCase().includes(term)) ||
        (wine.region && wine.region.toLowerCase().includes(term)) ||
        (wine.wine_type && wine.wine_type.toLowerCase().includes(term)) ||
-       (wine.wine_description && wine.wine_description.toLowerCase().includes(term));
+       (wine.wine_description && wine.wine_description.toLowerCase().includes(term)) ||
+       (wine.varietals && wine.varietals.toLowerCase().includes(term));
     });
 
     displaySearchResults(results, searchTerm);
@@ -533,15 +534,23 @@ function closeRegionModal() {
 }
 
 function showVarietalFilterModal() {
+    console.log('showVarietalFilterModal called');
+    
     if (!allWineData) {
+        console.log('Wine data not loaded yet');
         alert('Wine data is still loading. Please try again in a moment.');
         return;
     }
 
+    console.log('Wine data loaded, total wines:', allWineData.wines.length);
+
     // Get all unique varietals
     const varietals = [...new Set(allWineData.wines.map(wine => wine.varietals).filter(v => v))].sort();
     
+    console.log('Found varietals:', varietals);
+    
     if (varietals.length === 0) {
+        console.log('No varietals found in data');
         alert('No varietal information available. Please browse by wine type and region instead.');
         return;
     }
@@ -557,8 +566,8 @@ function showVarietalFilterModal() {
                 <div class="modal-content">
                     <p>Select a varietal to search for wines:</p>
                     <div class="varietal-list">
-                        ${varietals.map(varietal => 
-                            `<button class="varietal-btn glass-card" onclick="searchByVarietal('${varietal}')">${varietal}</button>`
+                        ${varietals.map((varietal, index) => 
+                            `<button class="varietal-btn glass-card" data-varietal="${index}">${varietal}</button>`
                         ).join('')}
                     </div>
                 </div>
@@ -580,6 +589,15 @@ function showVarietalFilterModal() {
         }
     });
     
+    // Add event listeners to varietal buttons
+    const varietalButtons = modal.querySelectorAll('.varietal-btn');
+    varietalButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            const varietal = varietals[index];
+            searchByVarietal(varietal);
+        });
+    });
+    
     // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
 }
@@ -593,10 +611,14 @@ function closeVarietalModal() {
 }
 
 function searchByVarietal(varietal) {
+    console.log('searchByVarietal called with:', varietal);
     closeVarietalModal();
     const searchInput = document.getElementById('wine-search-input');
     if (searchInput) {
         searchInput.value = varietal;
+        console.log('Setting search input to:', varietal);
         performGlobalSearch(varietal);
+    } else {
+        console.log('Search input not found');
     }
 }
