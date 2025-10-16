@@ -1,9 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded fired');
     // Check for page-specific elements instead of body class
     const regionsPage = document.querySelector('.regions-page');
     const winesPage = document.querySelector('.wines-page');
     const wineDetailsPage = document.querySelector('.wine-details-page');
     const indexPage = document.querySelector('.index-page');
+
+    console.log('Page detection:', {
+        regionsPage: !!regionsPage,
+        winesPage: !!winesPage,
+        wineDetailsPage: !!wineDetailsPage,
+        indexPage: !!indexPage
+    });
 
     if (regionsPage) {
         console.log('Loading regions page...');
@@ -298,9 +306,16 @@ function renderWines(wines) {
     }
 }
 function initializeIndexPage() {
+    console.log('initializeIndexPage called');
     const searchInput = document.getElementById('wine-search-input');
     const filterRegionBtn = document.getElementById('filter-region-btn');
     const filterVarietalBtn = document.getElementById('filter-varietal-btn');
+
+    console.log('Elements found:', {
+        searchInput: !!searchInput,
+        filterRegionBtn: !!filterRegionBtn,
+        filterVarietalBtn: !!filterVarietalBtn
+    });
 
     // Initialize search functionality
     initializeSearchFunctionality();
@@ -318,9 +333,13 @@ function initializeIndexPage() {
     }
 
     if (filterVarietalBtn) {
+        console.log('Adding event listener to varietal button');
         filterVarietalBtn.addEventListener('click', function () {
+            console.log('Varietal button clicked');
             showVarietalFilterModal();
         });
+    } else {
+        console.log('Varietal button not found');
     }
 }
 
@@ -328,11 +347,14 @@ function initializeIndexPage() {
 let allWineData = null;
 
 async function initializeSearchFunctionality() {
+    console.log('initializeSearchFunctionality called');
     try {
         const response = await fetch('data/wines.json');
         if (response.ok) {
             allWineData = await response.json();
             console.log('Wine data loaded for global search:', allWineData.wines.length, 'wines');
+        } else {
+            console.error('Failed to fetch wine data, status:', response.status);
         }
     } catch (error) {
         console.error('Failed to load wine data for search:', error);
