@@ -21,10 +21,10 @@
                     </aside>
                     <div class="wines-main">
                         <div class="layout-toggle">
-                            <button id="card-view-btn">Card View</button>
+                            <button id="card-view-btn" class="active">Card View</button>
                             <button id="table-view-btn">Table View</button>
                         </div>
-                        <div id="wine-cards-grid" class="wine-cards-grid">
+                        <div class="wine-cards-grid">
                             <!-- Card layout wines will be rendered here -->
                         </div>
                         <div id="wine-table-layout" class="wine-table-layout" style="display:none;">
@@ -55,25 +55,24 @@
         // Layout switching logic
         const cardViewBtn = document.getElementById('card-view-btn');
         const tableViewBtn = document.getElementById('table-view-btn');
-        const cardGrid = document.getElementById('wine-cards-grid');
+        const cardGrid = document.querySelector('.wine-cards-grid');
         const tableLayout = document.getElementById('wine-table-layout');
 
-        cardViewBtn.addEventListener('click', function() {
-            cardGrid.style.display = '';
-            tableLayout.style.display = 'none';
-            cardViewBtn.classList.add('active');
-            tableViewBtn.classList.remove('active');
-        });
+        if (cardViewBtn && tableViewBtn && cardGrid && tableLayout) {
+            cardViewBtn.addEventListener('click', function() {
+                cardGrid.style.display = '';
+                tableLayout.style.display = 'none';
+                cardViewBtn.classList.add('active');
+                tableViewBtn.classList.remove('active');
+            });
 
-        tableViewBtn.addEventListener('click', function() {
-            cardGrid.style.display = 'none';
-            tableLayout.style.display = '';
-            tableViewBtn.classList.add('active');
-            cardViewBtn.classList.remove('active');
-        });
-
-        // Set initial active state
-        cardViewBtn.classList.add('active');
+            tableViewBtn.addEventListener('click', function() {
+                cardGrid.style.display = 'none';
+                tableLayout.style.display = '';
+                tableViewBtn.classList.add('active');
+                cardViewBtn.classList.remove('active');
+            });
+        }
     </script>
 </body>
 </html>
