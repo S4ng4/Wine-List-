@@ -163,10 +163,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* INDEX PAGE STYLES - MODIFIED FOR LUXURY EFFECT */
 .main-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
     font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 700;
-    color: var(--secondary-color);
+    font-weight: 400;
+    color: #715c1b;
     margin-bottom: var(--spacing-xs);
     letter-spacing: 0.05em; /* Increased letter spacing */
     
@@ -355,9 +355,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .wine-type-card h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
     font-size: 1.8em; /* Increased font size */
-    font-weight: 700;
+    font-weight: 400;
     color: var(--accent-gold); /* Used accent gold for better contrast */
     margin-top: 0;
     letter-spacing: 0.1em; /* Increased letter spacing */
