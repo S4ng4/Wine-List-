@@ -48,7 +48,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Cinzel', serif;
     background: var(--background-gradient);
     color: var(--text-color-light);
     line-height: 1.7;
@@ -60,8 +60,8 @@ body {
 
 /* Luxury Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.02em;
 }
