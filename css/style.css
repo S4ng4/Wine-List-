@@ -1,40 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 
 :root {
-    /* Luxury Color Palette */
-    --primary-color: #2C1810;
-    --secondary-color: #D4AF37;
-    --accent-gold: #F4E4BC;
-    --text-color-light: #F8F6F0;
-    --text-color-muted: #C7B299;
-    --background-dark: #0A0A0A;
-    --background-gradient: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0F0F0F 100%);
-    
-    /* Glassmorphism Variables */
-    --glass-primary: rgba(255, 255, 255, 0.08);
-    --glass-secondary: rgba(255, 255, 255, 0.12);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --glass-hover: rgba(255, 255, 255, 0.15);
-    
-    /* Spacing System */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-xxl: 4rem;
-    
-    /* Border Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    /* Luxury Color Palette */
+    --primary-color: #2C1810;
+    --secondary-color: #D4AF37;
+    --accent-gold: #F4E4BC;
+    --text-color-light: #F8F6F0;
+    --text-color-muted: #C7B299;
+    --background-dark: #0A0A0A;
+    --background-gradient: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0F0F0F 100%);
+    
+    /* Luxury Colors from NewStyleIndex */
+    --gold: #D4AF37;
+    --dark-gold: #B8860B;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --ivory: #F5F5F0;
+    --cream: #F8F8F0;
+    
+    /* Glassmorphism Variables */
+    --glass-primary: rgba(255, 255, 255, 0.08);
+    --glass-secondary: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-hover: rgba(255, 255, 255, 0.15);
+    
+    /* Spacing System */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 * {
@@ -1364,14 +1372,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* LUXURY STYLES FROM NEWSTYLEINDEX.HTML */
-:root {
-    --gold: #D4AF37;
-    --dark-gold: #B8860B;
-    --black: #0A0A0A;
-    --charcoal: #1A1A1A;
-    --ivory: #F5F5F0;
-    --cream: #F8F8F0;
-}
 
 /* Luxury Container */
 .luxury-container {
