@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 
 :root {
     /* Luxury Color Palette */
@@ -48,22 +48,29 @@ html {
 }
 
 body {
-    font-family: 'Cinzel', serif;
-    background: var(--background-gradient);
-    color: var(--text-color-light);
-    line-height: 1.7;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif !important;
+    background: var(--background-gradient);
+    color: var(--text-color-light);
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-display: swap;
+}
+
+/* Force Cinzel font on all text elements */
+* {
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif !important;
 }
 
 /* Luxury Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cinzel', serif;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-display: swap;
 }
 
 /* Enhanced Glassmorphism Effects */
@@ -163,9 +170,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* INDEX PAGE STYLES - MODIFIED FOR LUXURY EFFECT */
 .main-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 400;
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
     color: #715c1b;
     margin-bottom: var(--spacing-xs);
     letter-spacing: 0.05em; /* Increased letter spacing */
@@ -355,8 +362,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .wine-type-card h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8em; /* Increased font size */
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif;
+    font-size: 1.8em; /* Increased font size */
     font-weight: 400;
     color: var(--accent-gold); /* Used accent gold for better contrast */
     margin-top: 0;
@@ -1299,59 +1306,446 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
-    .page-container {
-        padding: var(--spacing-sm);
-    }
+    .page-container {
+        padding: var(--spacing-sm);
+    }
 
-    .content-wrapper {
-        padding: var(--spacing-sm);
-    }
+    .content-wrapper {
+        padding: var(--spacing-sm);
+    }
 
-    .wine-search-filter-bar {
-        padding: var(--spacing-sm);
-        gap: var(--spacing-xs);
-        margin-bottom: var(--spacing-md);
-    }
+    .wine-search-filter-bar {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-md);
+    }
 
-    .wine-search-filter-bar input[type="text"] {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: 0.9rem;
-    }
+    .wine-search-filter-bar input[type="text"] {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
 
-    .wine-search-filter-bar button {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        font-size: 0.8rem;
-    }
+    .wine-search-filter-bar button {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.8rem;
+    }
 
-    .wine-type-selection {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
-    }
+    .wine-type-selection {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
 
-    .wine-type-card {
-        padding: var(--spacing-md);
-        min-height: 160px;
-        border-radius: var(--radius-lg);
-    }
+    .wine-type-card {
+        padding: var(--spacing-md);
+        min-height: 160px;
+        border-radius: var(--radius-lg);
+    }
 
-    .wine-type-card h3 {
-        font-size: 1em;
-        padding: var(--spacing-xs) var(--spacing-sm);
-    }
+    .wine-type-card h3 {
+        font-size: 1em;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
 
-    .main-title {
-        font-size: clamp(2.5rem, 10vw, 4rem);
-    }
-    
-    .filter-modal-overlay {
-        padding: var(--spacing-md);
-    }
-    
-    .wine-type-selection-modal {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .varietal-list {
-        grid-template-columns: 1fr;
-    }
+    .main-title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+    
+    .filter-modal-overlay {
+        padding: var(--spacing-md);
+    }
+    
+    .wine-type-selection-modal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .varietal-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* LUXURY STYLES FROM NEWSTYLEINDEX.HTML */
+:root {
+    --gold: #D4AF37;
+    --dark-gold: #B8860B;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --ivory: #F5F5F0;
+    --cream: #F8F8F0;
+}
+
+/* Luxury Container */
+.luxury-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+        linear-gradient(var(--black) 0%, var(--charcoal) 100%);
+    position: relative;
+}
+
+.luxury-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.02"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="white"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
+
+/* Header Section */
+.luxury-header {
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.luxury-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.luxury-logo::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: conic-gradient(transparent, var(--gold), transparent 30%);
+    animation: rotate 10s linear infinite;
+}
+
+.luxury-logo::after {
+    content: 'GCL';
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.luxury-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.luxury-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 8px;
+    color: var(--ivory);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.luxury-divider {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+}
+
+.luxury-tagline {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* Search and Filter */
+.luxury-search-container {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.luxury-search-bar {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.luxury-search-input {
+    flex: 1;
+    min-width: 300px;
+    padding: 1rem 1.5rem;
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 0;
+    color: var(--ivory);
+    font-family: 'Cormorant', serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.luxury-search-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.luxury-search-input::placeholder {
+    color: rgba(245, 245, 240, 0.5);
+}
+
+.luxury-filter-btn {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Cormorant', serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.luxury-filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.luxury-filter-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.luxury-filter-btn:hover::before {
+    left: 100%;
+}
+
+/* Wine Selection */
+.luxury-wine-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.luxury-wine-card {
+    background: linear-gradient(145deg, rgba(26, 26, 26, 0.7), rgba(10, 10, 10, 0.9));
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--ivory);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.luxury-wine-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.luxury-wine-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.luxury-wine-card:hover::before {
+    transform: translateX(100%);
+}
+
+.wine-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--gold);
+    position: relative;
+}
+
+.wine-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.luxury-wine-card:hover .wine-icon::after {
+    transform: scale(1.1);
+    border-color: var(--gold);
+}
+
+.wine-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.wine-subtitle {
+    font-size: 0.9rem;
+    color: rgba(245, 245, 240, 0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Footer */
+.luxury-footer {
+    background: rgba(10, 10, 10, 0.9);
+    padding: 3rem 2rem 2rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.footer-info {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(245, 245, 240, 0.7);
+}
+
+.footer-info i {
+    color: var(--gold);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-icons a {
+    color: rgba(245, 245, 240, 0.7);
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--gold);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: rgba(245, 245, 240, 0.5);
+    text-align: center;
+}
+
+/* Luxury Responsive Design */
+@media (max-width: 768px) {
+    .luxury-title {
+        font-size: 2.5rem;
+    }
+    
+    .luxury-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+    }
+    
+    .luxury-search-bar {
+        flex-direction: column;
+    }
+    
+    .luxury-search-input {
+        min-width: 100%;
+    }
+    
+    .luxury-wine-selection {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .luxury-wine-selection {
+        grid-template-columns: 1fr;
+    }
+    
+    .luxury-title {
+        font-size: 2rem;
+    }
 }
