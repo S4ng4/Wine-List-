@@ -3,60 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRAN CAFFE L'AQUILA - Digital Wine List</title>
+    <title>GRAN CAFFÈ L'AQUILA - Luxury Wine Selection</title>
     <link rel="icon" type="image/png" href="gcaLogo.png">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=3">
 <body>
-    <header>
-        <nav>
-            <div class="container nav-container">
-                <div class="nav-logo">TERROIR</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#wines">Wines</a></li>
-                    <li><a href="#story">Our Story</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+    <div class="luxury-container">
+        <header class="luxury-header">
+            <div class="logo-container">
+                <div class="luxury-logo"></div>
             </div>
-        </nav>
-    </header>    
-    <div class="page-container index-page">
-        <div class="logo-container">
-            <img src="gcaLogo.png" alt="Gran Caffè L'Aquila Logo" class="main-logo">
-        </div>
-        <div class="content-wrapper">
-            <h1 class="main-title">GRAN CAFFÈ L'AQUILA</h1>
-            <p class="subtitle">DIGITAL WINE LIST</p>
-            <p class="instruction">Iniza il viaggio</p>
+            <h1 class="luxury-title">GRAN CAFFÈ L'AQUILA</h1>
+            <p class="luxury-subtitle">DIGITAL WINE LIST</p>
+            <div class="luxury-divider"></div>
+            <p class="luxury-tagline">Inizia il viaggio</p>
             
-            <!-- Search and Filter Bar Start -->
-            <div class="wine-search-filter-bar">
-                <input type="text" id="wine-search-input" placeholder="Search wines..." />
-                <button id="filter-region-btn">Filter by Region</button>
-                <button id="filter-varietal-btn">Filter by Varietal</button>
+            <div class="luxury-search-container">
+                <div class="luxury-search-bar">
+                    <input type="text" class="luxury-search-input" placeholder="Search wines...">
+                    <button class="luxury-filter-btn">Filter by Region</button>
+                    <button class="luxury-filter-btn">Filter by Varietal</button>
+                </div>
             </div>
-            <!-- Search and Filter Bar End -->
+        </header>
 
-            <div class="wine-type-selection">
-                <a href="regions.html?type=ROSSO" class="wine-type-card">
-                    <img src="1.png" alt="Red Wine Icon">
-                    <h3>RED WINES</h3>
+        <main>
+            <div class="luxury-wine-selection">
+                <a href="regions.html?type=ROSSO" class="luxury-wine-card">
+                    <div class="wine-icon">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <h3 class="wine-title">RED WINES</h3>
+                    <p class="wine-subtitle">Bold & Complex</p>
                 </a>
-                <a href="regions.html?type=BIANCO" class="wine-type-card">
-                    <img src="2.png" alt="White Wine Icon">
-                    <h3>WHITE WINES</h3>
+                <a href="regions.html?type=BIANCO" class="luxury-wine-card">
+                    <div class="wine-icon">
+                        <i class="fas fa-wine-glass-alt"></i>
+                    </div>
+                    <h3 class="wine-title">WHITE WINES</h3>
+                    <p class="wine-subtitle">Crisp & Refreshing</p>
                 </a>
-                <a href="regions.html?type=ROSATO" class="wine-type-card">
-                    <img src="3.png" alt="Rosé Wine Icon">
-                    <h3>ROSÉ WINES</h3>
+                <a href="regions.html?type=ROSATO" class="luxury-wine-card">
+                    <div class="wine-icon">
+                        <i class="fas fa-wine-glass"></i>
+                    </div>
+                    <h3 class="wine-title">ROSÉ WINES</h3>
+                    <p class="wine-subtitle">Elegant & Delicate</p>
                 </a>
-                <a href="regions.html?type=BOLLICINE" class="wine-type-card">
-                    <img src="4.png" alt="Sparkling Wine Icon">
-                    <h3>SPARKLING</h3>
+                <a href="regions.html?type=BOLLICINE" class="luxury-wine-card">
+                    <div class="wine-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3 class="wine-title">SPARKLING</h3>
+                    <p class="wine-subtitle">Celebratory & Vibrant</p>
                 </a>
             </div>
-             <footer class="luxury-footer">
+        </main>
+
+        <footer class="luxury-footer">
             <div class="footer-content">
                 <div class="footer-logo">GRAN CAFFÈ L'AQUILA</div>
                 <div class="footer-info">
@@ -74,8 +79,49 @@
                 </div>
             </div>
         </footer>
-        </div>
     </div>
+
+    <script>
+        // Add luxury interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            const searchInput = document.querySelector('.luxury-search-input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                console.log('Searching for:', searchTerm);
+            });
+
+            // Filter buttons functionality
+            const filterButtons = document.querySelectorAll('.luxury-filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filterType = this.textContent.includes('Region') ? 'Region' : 'Varietal';
+                    alert(`Filter by ${filterType} functionality would open a selection menu`);
+                });
+            });
+
+            // Add luxury hover effects to wine cards
+            const wineCards = document.querySelectorAll('.luxury-wine-card');
+            wineCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add subtle animation to page load
+            const luxuryContainer = document.querySelector('.luxury-container');
+            luxuryContainer.style.opacity = '0';
+            luxuryContainer.style.transition = 'opacity 1s ease';
+            
+            setTimeout(() => {
+                luxuryContainer.style.opacity = '1';
+            }, 100);
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
