@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+ocument.addEventListener('DOMContentLoaded', () => {
     loadWineDetails();
     setupBackButton();
 });
@@ -14,7 +14,7 @@ async function loadWineDetails() {
         const data = await fetchData('data/wines.json');
         if (!data) return;
 
-        const wine = data.wines.find(w => w.wine_number === wineId);
+        const wine = data.wines.find(w => w.wine_number === wineId || w.wine_number === wineId.toString());
         if (!wine) {
             console.error('Wine not found');
             return;
@@ -40,6 +40,13 @@ function displayWineDetails(wine) {
         'BAROLO DOCG': 'BAROLO'
     };
 
+    // Handle specific wine types by extracting the base type
+    let baseType = wine.wine_type;
+    if (wine.wine_type.includes('ROSSO')) baseType = 'ROSSO';
+    else if (wine.wine_type.includes('BIANCO')) baseType = 'BIANCO';
+    else if (wine.wine_type.includes('ROSATO')) baseType = 'ROSATO';
+    else if (wine.wine_type.includes('BOLLICINE')) baseType = 'BOLLICINE';
+
     // Update page title
     document.title = `${wine.wine_name} - Gran Caffè L'Aquila`;
 
@@ -53,14 +60,14 @@ function displayWineDetails(wine) {
     }
     
     const wineTypeBadge = document.getElementById('wine-type-badge');
-    wineTypeBadge.textContent = wineTypeNames[wine.wine_type] || wine.wine_type;
+    wineTypeBadge.textContent = wineTypeNames[baseType] || wine.wine_type;
 
     // Update info cards
     document.getElementById('wine-vintage').textContent = wine.wine_vintage;
     document.getElementById('wine-region').textContent = wine.region;
     document.getElementById('wine-category').textContent = wine.category;
     
-    const priceText = wine.wine_price_bottle ? `$${wine.wine_price_bottle}` : 'Price upon request';
+    const priceText = wine.wine_price ? `$${wine.wine_price}` : 'Price upon request';
     document.getElementById('wine-price').textContent = priceText;
 
     // Update description
@@ -70,7 +77,7 @@ function displayWineDetails(wine) {
     // Update technical details
     document.getElementById('wine-number').textContent = wine.wine_number;
     document.getElementById('wine-producer-detail').textContent = wine.wine_producer;
-    document.getElementById('wine-type-detail').textContent = wineTypeNames[wine.wine_type] || wine.wine_type;
+    document.getElementById('wine-type-detail').textContent = wineTypeNames[baseType] || wine.wine_type;
     document.getElementById('wine-organic-detail').textContent = wine.organic ? 'Yes' : 'No';
 }
 
