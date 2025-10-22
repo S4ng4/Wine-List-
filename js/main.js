@@ -73,7 +73,14 @@ async function loadRegionsPage() {
         'BAROLO DOCG': 'BAROLO'
     };
 
-    const displayName = wineTypeNames[wineType] || wineType;
+    // Handle specific wine types by extracting the base type
+    let baseType = wineType;
+    if (wineType.includes('ROSSO')) baseType = 'ROSSO';
+    else if (wineType.includes('BIANCO')) baseType = 'BIANCO';
+    else if (wineType.includes('ROSATO')) baseType = 'ROSATO';
+    else if (wineType.includes('BOLLICINE')) baseType = 'BOLLICINE';
+    
+    const displayName = wineTypeNames[baseType] || wineType;
     console.log('Display name:', displayName);
     
     const titleElement = document.getElementById('wine-type-title');
@@ -99,8 +106,8 @@ async function loadRegionsPage() {
         return;
     }
 
-    // Use "wine_type" to match your JSON
-    const wineRegions = [...new Set(data.wines.filter(wine => wine.wine_type === wineType).map(wine => wine.region))];
+    // Use "wine_type" to match your JSON - handle specific wine types
+    const wineRegions = [...new Set(data.wines.filter(wine => wine.wine_type.startsWith(wineType)).map(wine => wine.region))];
     console.log('Found regions for', wineType, ':', wineRegions);
 
     // Clear existing buttons
@@ -147,13 +154,20 @@ async function loadWinesPage() {
         'BAROLO DOCG': 'BAROLO'
     };
 
-    const displayName = wineTypeNames[wineType] || wineType;
+    // Handle specific wine types by extracting the base type
+    let baseType = wineType;
+    if (wineType.includes('ROSSO')) baseType = 'ROSSO';
+    else if (wineType.includes('BIANCO')) baseType = 'BIANCO';
+    else if (wineType.includes('ROSATO')) baseType = 'ROSATO';
+    else if (wineType.includes('BOLLICINE')) baseType = 'BOLLICINE';
+    
+    const displayName = wineTypeNames[baseType] || wineType;
     document.getElementById('wine-header').textContent = `${displayName} WINES - ${region.toUpperCase()}`;
 
     const data = await fetchData('data/wines.json');
     if (!data) return;
 
-    allWines = data.wines.filter(wine => wine.wine_type === wineType && wine.region === region);
+    allWines = data.wines.filter(wine => wine.wine_type.startsWith(wineType) && wine.region === region);
     currentFilters.type = wineType;
     currentFilters.region = region;
 
@@ -168,7 +182,7 @@ function setupFilters(wines) {
     // Get unique values for filters
     const producers = [...new Set(wines.map(w => w.wine_producer))].sort();
     const vintages = [...new Set(wines.map(w => w.wine_vintage))].sort();
-    const prices = wines.map(w => parseInt(w.wine_price_bottle)).filter(p => !isNaN(p));
+    const prices = wines.map(w => parseInt(w.wine_price)).filter(p => !isNaN(p));
     const minPrice = Math.min(...prices);
     const maxPrice = Math.max(...prices);
 
@@ -234,7 +248,7 @@ function applyFilters() {
     const filteredWines = allWines.filter(wine => {
         const matchesProducer = !producer || wine.wine_producer === producer;
         const matchesVintage = !vintage || wine.wine_vintage === vintage;
-        const winePrice = parseInt(wine.wine_price_bottle) || 0;
+        const winePrice = parseInt(wine.wine_price) || 0;
         const matchesPrice = winePrice >= priceMin && winePrice <= priceMax;
         const matchesOrganic = !organic || wine.organic;
 
@@ -272,7 +286,7 @@ function renderWines(wines) {
                 <div class="producer">${wine.wine_producer}</div>
                 <div class="vintage">${wine.wine_vintage}</div>
                 <div class="description">${wine.wine_description || 'A fine selection from our curated collection.'}</div>
-                <div class="price">${wine.wine_price_bottle ? '$' + wine.wine_price_bottle : 'Price upon request'}</div>
+                <div class="price">${wine.wine_price ? '$' + wine.wine_price : 'Price upon request'}</div>
                 ${wine.organic ? '<span class="organic-badge">ORGANIC</span>' : ''}
             `;
             winesGrid.appendChild(card);
@@ -297,7 +311,7 @@ function renderWines(wines) {
                     <td>${wine.wine_producer}</td>
                     <td>${wine.wine_vintage}</td>
                     <td>${wine.wine_description || 'A fine selection from our curated collection.'}</td>
-                    <td>${wine.wine_price_bottle ? '$' + wine.wine_price_bottle : 'Price upon request'}</td>
+                    <td>${wine.wine_price ? '$' + wine.wine_price : 'Price upon request'}</td>
                     <td>${wine.organic ? 'Yes' : 'No'}</td>
                 `;
                 tableBody.appendChild(row);
@@ -452,7 +466,7 @@ function createWineCard(wine) {
         <div class="vintage">${wine.wine_vintage}</div>
         <div class="region">${wine.region}</div>
         <div class="description">${wine.wine_description || 'A fine selection from our curated collection.'}</div>
-        <div class="price">${wine.wine_price_bottle ? '$' + wine.wine_price_bottle : 'Price upon request'}</div>
+        <div class="price">${wine.wine_price ? '$' + wine.wine_price : 'Price upon request'}</div>
         ${wine.organic ? '<span class="organic-badge">ORGANIC</span>' : ''}
     `;
     return card;
