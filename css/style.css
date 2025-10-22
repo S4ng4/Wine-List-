@@ -1371,9 +1371,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* LUXURY STYLES FROM NEWSTYLEINDEX.HTML */
+/* LUXURY STYLES FROM NEWSTYLEINDEX.HTML - MOBILE FIRST */
 
-/* Luxury Container */
+/* Luxury Container - Mobile First */
 .luxury-container {
     min-height: 100vh;
     display: flex;
@@ -1383,6 +1383,7 @@ h1, h2, h3, h4, h5, h6 {
         radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
         linear-gradient(var(--black) 0%, var(--charcoal) 100%);
     position: relative;
+    padding: 1rem;
 }
 
 .luxury-container::before {
@@ -1396,24 +1397,24 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: none;
 }
 
-/* Header Section */
+/* Header Section - Mobile First */
 .luxury-header {
-    padding: 2rem 0;
+    padding: 1rem 0;
     text-align: center;
     position: relative;
     z-index: 2;
 }
 
 .luxury-logo {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--gold), var(--dark-gold));
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     border: 2px solid rgba(212, 175, 55, 0.5);
     position: relative;
     overflow: hidden;
@@ -1431,8 +1432,8 @@ h1, h2, h3, h4, h5, h6 {
 .luxury-logo::after {
     content: 'GCL';
     position: absolute;
-    width: 110px;
-    height: 110px;
+    width: 70px;
+    height: 70px;
     background: var(--black);
     border-radius: 50%;
     display: flex;
@@ -1440,9 +1441,9 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     color: var(--gold);
     font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 @keyframes rotate {
@@ -1452,65 +1453,64 @@ h1, h2, h3, h4, h5, h6 {
 
 .luxury-title {
     font-family: 'Cinzel', serif;
-    font-size: 3.5rem;
+    font-size: 2rem;
     font-weight: 400;
     color: var(--gold);
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     margin-bottom: 0.5rem;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    line-height: 1.2;
 }
 
 .luxury-subtitle {
-    font-size: 1.1rem;
-    letter-spacing: 8px;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
     color: var(--ivory);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: 300;
     text-transform: uppercase;
 }
 
 .luxury-divider {
-    width: 100px;
+    width: 60px;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .luxury-tagline {
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--gold);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-weight: 300;
 }
 
-/* Search and Filter */
+/* Search and Filter - Mobile First */
 .luxury-search-container {
-    max-width: 800px;
-    margin: 0 auto 4rem;
-    padding: 0 2rem;
+    width: 100%;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
     position: relative;
     z-index: 2;
 }
 
 .luxury-search-bar {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
 }
 
 .luxury-search-input {
-    flex: 1;
-    min-width: 300px;
-    padding: 1rem 1.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
     background: rgba(26, 26, 26, 0.7);
     border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 0;
     color: var(--ivory);
     font-family: 'Cormorant', serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;
 }
@@ -1526,12 +1526,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .luxury-filter-btn {
-    padding: 1rem 2rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
     background: transparent;
     border: 1px solid var(--gold);
     color: var(--gold);
     font-family: 'Cormorant', serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1558,14 +1559,14 @@ h1, h2, h3, h4, h5, h6 {
     left: 100%;
 }
 
-/* Wine Selection */
+/* Wine Selection - Mobile First */
 .luxury-wine-selection {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto 4rem;
-    padding: 0 2rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
     position: relative;
     z-index: 2;
 }
@@ -1573,13 +1574,14 @@ h1, h2, h3, h4, h5, h6 {
 .luxury-wine-card {
     background: linear-gradient(145deg, rgba(26, 26, 26, 0.7), rgba(10, 10, 10, 0.9));
     border: 1px solid rgba(212, 175, 55, 0.2);
-    padding: 2.5rem 1.5rem;
+    padding: 1.5rem 1rem;
     text-align: center;
     text-decoration: none;
     color: var(--ivory);
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .luxury-wine-card::before {
@@ -1595,7 +1597,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .luxury-wine-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     border-color: var(--gold);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -1605,13 +1607,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .wine-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--gold);
     position: relative;
 }
@@ -1632,9 +1634,24 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--gold);
 }
 
+.wine-image {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+    transition: all 0.3s ease;
+    z-index: 2;
+    position: relative;
+}
+
+.luxury-wine-card:hover .wine-image {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.5));
+}
+
 .wine-title {
     font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--gold);
     margin-bottom: 0.5rem;
     letter-spacing: 1px;
@@ -1642,16 +1659,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .wine-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: rgba(245, 245, 240, 0.7);
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-/* Footer */
+/* Footer - Mobile First */
 .luxury-footer {
     background: rgba(10, 10, 10, 0.9);
-    padding: 3rem 2rem 2rem;
+    padding: 2rem 1rem 1.5rem;
     margin-top: auto;
     border-top: 1px solid rgba(212, 175, 55, 0.1);
     position: relative;
@@ -1668,25 +1685,26 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-logo {
     font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--gold);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     letter-spacing: 2px;
 }
 
 .footer-info {
     display: flex;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .footer-info p {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: rgba(245, 245, 240, 0.7);
 }
 
@@ -1697,7 +1715,7 @@ h1, h2, h3, h4, h5, h6 {
 .social-icons {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .social-icons a {
@@ -1711,41 +1729,245 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .copyright {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: rgba(245, 245, 240, 0.5);
     text-align: center;
 }
 
-/* Luxury Responsive Design */
-@media (max-width: 768px) {
+/* Tablet and Desktop Enhancements - Mobile First Approach */
+@media (min-width: 480px) {
+    .luxury-container {
+        padding: 1.5rem;
+    }
+    
+    .luxury-header {
+        padding: 1.5rem 0;
+    }
+    
+    .luxury-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .luxury-logo::after {
+        width: 90px;
+        height: 90px;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
     .luxury-title {
         font-size: 2.5rem;
+        letter-spacing: 3px;
     }
     
     .luxury-subtitle {
-        font-size: 0.9rem;
-        letter-spacing: 4px;
+        font-size: 1rem;
+        letter-spacing: 6px;
+    }
+    
+    .luxury-divider {
+        width: 80px;
+        margin: 1.5rem auto;
+    }
+    
+    .luxury-tagline {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .luxury-search-container {
+        margin: 0 auto 3rem;
+        padding: 0 1.5rem;
     }
     
     .luxury-search-bar {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 1rem;
     }
     
     .luxury-search-input {
-        min-width: 100%;
+        flex: 1;
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .luxury-filter-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        width: auto;
     }
     
     .luxury-wine-selection {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin: 0 auto 3rem;
+        padding: 0 1.5rem;
+    }
+    
+    .luxury-wine-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .wine-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1.25rem;
+        font-size: 2.25rem;
+    }
+    
+    .wine-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .wine-title {
+        font-size: 1.3rem;
+    }
+    
+    .wine-subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .luxury-footer {
+        padding: 2.5rem 1.5rem 2rem;
+    }
+    
+    .footer-logo {
+        font-size: 1.4rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .footer-info {
+        flex-direction: row;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .footer-info p {
+        font-size: 0.85rem;
+    }
+    
+    .copyright {
+        font-size: 0.75rem;
     }
 }
 
-@media (max-width: 480px) {
-    .luxury-wine-selection {
-        grid-template-columns: 1fr;
+@media (min-width: 768px) {
+    .luxury-container {
+        padding: 2rem;
+    }
+    
+    .luxury-header {
+        padding: 2rem 0;
+    }
+    
+    .luxury-logo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .luxury-logo::after {
+        width: 110px;
+        height: 110px;
+        font-size: 1.8rem;
     }
     
     .luxury-title {
-        font-size: 2rem;
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+    
+    .luxury-subtitle {
+        font-size: 1.1rem;
+        letter-spacing: 8px;
+    }
+    
+    .luxury-divider {
+        width: 100px;
+        margin: 2rem auto;
+    }
+    
+    .luxury-tagline {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .luxury-search-container {
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        padding: 0 2rem;
+    }
+    
+    .luxury-search-input {
+        min-width: 300px;
+    }
+    
+    .luxury-wine-selection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto 4rem;
+        padding: 0 2rem;
+    }
+    
+    .luxury-wine-card {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .wine-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        font-size: 2.5rem;
+    }
+    
+    .wine-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .wine-title {
+        font-size: 1.4rem;
+    }
+    
+    .wine-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+    
+    .luxury-footer {
+        padding: 3rem 2rem 2rem;
+    }
+    
+    .footer-logo {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-info {
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-info p {
+        font-size: 0.9rem;
+    }
+    
+    .copyright {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .luxury-wine-selection {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .luxury-title {
+        font-size: 3.5rem;
     }
 }
